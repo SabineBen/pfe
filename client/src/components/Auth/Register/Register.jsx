@@ -1,16 +1,17 @@
-import React, { useState } from "react"
-import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 function Signup() {
     const navigate = useNavigate();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [role, setRole] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [error, setError] = useState('');
 
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
@@ -19,30 +20,25 @@ function Signup() {
                 password,
                 name,
                 phoneNumber,
+
             });
 
             const { data } = response;
 
-            console.log("Response data:", data);
+            if (data.message === "User created successfully") {
 
-            if (data.token) {
-                console.log("Token:", data.token);
+                navigate("/home");
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('email', email);
-
-                navigate("/home", { state: { id: email } });
-            }
-
-            if (data === "exist") {
-                alert("User already exists");
-            } else if (data === "notexist") {
-                alert("User registered successfully");
+                console.log(data)
+            } else {
+                setError(data.message);
             }
         } catch (error) {
+            setError("An error occurred while signing up");
             console.error("Error:", error);
-            alert("An error occurred while registering");
         }
-    }
+    };
 
     return (
         <div className="signup">
@@ -54,8 +50,9 @@ function Signup() {
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                 <button type="submit">Submit</button>
             </form>
+            {error && <p className="error">{error}</p>}
             <p>OR</p>
-            <Link to="/">Login Page</Link>
+            <Link to="/login">Login Page</Link>
         </div>
     )
 }

@@ -1,0 +1,48 @@
+.offert-card {
+    background-color: #fff;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.offert-content {
+    padding: 20px;
+}
+
+.offert-type {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3182ce;
+    margin-bottom: 10px;
+}
+
+.offert-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.offert-description {
+    font-size: 16px;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.offert-address {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 5px;
+}
+
+.offert-date {
+    font-size: 14px;
+    color: #718096;
+}
+
+.offert-deadline {
+    font-size: 14px;
+    color: #718096;
+    margin-top: 5px;
+}
