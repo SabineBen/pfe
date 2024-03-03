@@ -1,6 +1,6 @@
 // server/controllers/controllers.js
 const jwtHelper = require("../helpers/jwt");
-const collection = require("../models/user");
+const collection = require("../models/User");
 const Data = require("../models/Data");
 const Item = require('../models/Project');
 
