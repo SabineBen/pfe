@@ -15,7 +15,7 @@ function Signup() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:8000/register", {
+            const response = await axios.post("https://pfe-qvol.onrender.com/register", {
                 email,
                 password,
                 name,
