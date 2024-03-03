@@ -26,7 +26,7 @@ function Besoins() {
 
     const handleDelete = async (itemIdToDelete) => {
         try {
-            const response = await fetch(`http://localhost:8000/items/${itemIdToDelete}`, {
+            const response = await fetch(`https://pfe-qvol.onrender.com/items/${itemIdToDelete}`, {
                 method: 'DELETE'
             });
 
@@ -44,7 +44,7 @@ function Besoins() {
     };
     const handleUpdate = async (itemId, updatedData) => {
         try {
-            const response = await fetch(`http://localhost:8000/items/${itemId}`, {
+            const response = await fetch(`https://pfe-qvol.onrender.com/items/${itemId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ function Besoins() {
     };
     const fetchItems = async () => {
         try {
-            const response = await fetch('http://localhost:8000/getItems');
+            const response = await fetch('https://pfe-qvol.onrender.com/getItems');
             if (!response.ok) {
                 throw new Error('Failed to fetch items');
             }
@@ -87,7 +87,7 @@ function Besoins() {
                 await handleUpdate(selectedItemId, { name: inputValue, type: selectedType });
                 setSelectedItemId(null);
             } else {
-                const response = await fetch('http://localhost:8000/items', {
+                const response = await fetch('https://pfe-qvol.onrender.com/items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
