@@ -12,7 +12,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "npx nodemon index.js",
     "build": "npm i"
   }
 }
