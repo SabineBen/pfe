@@ -1,6 +1,11 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
+import './Login.css';
+import { MdEmail  } from "react-icons/md";
+import { AiFillLock } from "react-icons/ai";
+
+
 
 
 function Login() {
@@ -49,24 +54,31 @@ function Login() {
 
 
     return (
-        <div className="login">
-
-            <h1>Login</h1>
-
+        <div className="comp">
+              <div className="login">
+            <div className="cont log">
             <form action="POST">
-                <input type="email" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email" />
-                <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" />
-                <input type="submit" onClick={submit} />
-
+            <h1>Login</h1>
+            <div className="input-box" >
+              <input type="email" placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} /> 
+              <i>     <MdEmail/>   </i>
+            </div>
+            <div className="input-box">
+              <input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
+              <i>   <AiFillLock />   </i>
+            </div>
+            <button type="submit" className="btn" onClick={submit}>Login</button>
+            <div className="register-link">
+              <p>Don't have an account?<Link to="/signup" className="a">Signup</Link></p>
+            </div>
             </form>
-
-            <br />
-            <p>OR</p>
-            <br />
-
-            <Link to="/signup">Signup Page</Link>
-
+            </div>
+            <div className="side">
+            <span className="bg-animate"></span>
+            </div>
         </div>
+        </div>
+      
     )
 }
 

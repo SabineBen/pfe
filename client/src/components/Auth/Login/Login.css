@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.comp {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #06411e;
+    background-size: cover;
+    background-position: center;
+}
+
+.login {
+    width: 800px; /* Utilisez une largeur relative pour s'adapter à différentes tailles d'écran */
+    max-width: 750px; /* Limitez la largeur maximale pour éviter qu'il ne devienne trop large sur de grands écrans */
+    height: 450px;
+    background: transparent;
+    border: 2px solid #C2D5AA;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    margin: 20px; /* Ajoutez une marge pour aérer le contenu sur de plus grands écrans */
+}
+
+.cont {
+    position: center; /* "center" n'est pas une valeur valide pour "position" - utilisez "relative", "absolute", etc. */
+    top: 0; /* Cette propriété ne s'applique pas ici */
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cont.log {
+    left: 0;
+    padding: 0 40px;
+}
+
+.cont h1 {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+}
+
+.cont .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    padding-right: 23px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    transition: .5s;
+}
+
+input:focus {
+    border-bottom-color: #C2D5AA;
+}
+
+.input-box input::placeholder {
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #C2D5AA;
+    pointer-events: none;
+}
+
+input:focus,
+input:valid~label {
+    top: -5px; /* Ajoutez une unité de mesure (par exemple, pixels) à cette valeur */
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    transition: .5s;
+}
+
+input:focus~i,
+input:valid {
+    color: #C2D5AA;
+}
+
+.cont .btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #C2D5AA;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: #0c5037;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover::before {
+    top: 0;
+}
+
+.cont .register-link {
+    font-size: 14.5px;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.register-link .a {
+    color: #C2D5AA;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+.login .side .bg-animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 450px;
+    background: url('C:\Users\TOSHIBA\OneDrive\Desktop\pfe S\pfe\client\src\components\Auth\Assets\Fingerprint-bro.svg') no-repeat;
+    transform-origin: bottom right;
+    display: none;
+}
+@media screen and (max-width: 768px) {
+  .login{
+    width: 50%;
+  }
+  .cont{
+    width: 100%;
+  }
+  .cont h1{
+    font-size:18px;
+  }
+  .input-box input{
+    font-size: 14px;
+  }
+  .input-box input::placeholder{
+    font-size: 14px;
+  }
+  .input-box i{
+    font-size: 14px;
+  }
+  .cont .btn{
+    font-size: 14px;
+  }
+  .cont .register-link{
+    font-size: 14px;
+  }
+
+}
+
+/* Pour les appareils ayant une largeur d'écran comprise entre 768px et 1024px (comme les tablettes) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .cont h1{
+    font-size:22px;
+  }
+  .input-box input{
+    font-size: 12px;
+  }
+  .input-box input::placeholder{
+    font-size: 12px;
+  }
+  .input-box i{
+    font-size: 12px;
+  }
+  .cont .btn{
+    font-size: 12px;
+  }
+  .cont .register-link{
+    font-size: 12px;
+  }
+ 
+  .login .side .bg-animate{
+    display:inline;
+  }
+}
+
+/* Pour les appareils ayant une largeur d'écran supérieure à 1024px (comme les ordinateurs de bureau) */
+@media screen and (min-width: 1024px) {
+  .cont h1{
+    font-size:35px;
+  }
+  .input-box input{
+    font-size: 16px;
+  }
+  .input-box input::placeholder{
+    font-size: 16px;
+  }
+  .input-box i{
+    font-size: 16px;
+  }
+  .cont .btn{
+    font-size: 16px;
+  }
+  .cont .register-link{
+    font-size: 16px;
+  }
+  .login .side .bg-animate{
+    display:inline;
+  }
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

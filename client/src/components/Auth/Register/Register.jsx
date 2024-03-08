@@ -1,6 +1,11 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
+import './Register.css';
+import { MdEmail  } from "react-icons/md";
+import { AiFillLock } from "react-icons/ai";
+import { FaUser } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa";
 
 function Signup() {
     const navigate = useNavigate();
@@ -45,18 +50,39 @@ function Signup() {
     }
 
     return (
-        <div className="signup">
-            <h1>Signup</h1>
+        <div className="compont">
+              <div className="signup">
+            <div className="cont sing">
             <form onSubmit={handleSubmit}>
+                <h1>Signup</h1>
+                <div className="input-box">
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+                <i> <FaUser /> </i>
+                </div>
+                <div className="input-box">
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <i>     <MdEmail/>   </i>
+                </div>
+                <div className="input-box">
                 <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Phone number" />
+                <i> <FaPhone /> </i>
+                </div>
+                <div className="input-box">
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                <button type="submit">Submit</button>
+                <i>   <AiFillLock />   </i>
+                </div>
+               <button type="submit" className="btn">Submit</button>
+               <div className="register-link">
+                <p>You have account?</p><Link to="/" className="a">Login Page</Link>
+               </div>
             </form>
-            <p>OR</p>
-            <Link to="/">Login Page</Link>
+            </div>
+            <div className="sidee">
+            <span className="bg-animate"></span>
+            </div>
         </div>
+        </div>
+      
     )
 }
 
