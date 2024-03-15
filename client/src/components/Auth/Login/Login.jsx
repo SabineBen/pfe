@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
@@ -7,53 +8,55 @@ import { AiFillLock } from "react-icons/ai";
 
 
 
+=======
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+>>>>>>> 0351780467f333dde925b79c120f8e17722a1898
 
 function Login() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const history = useNavigate();
-
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    async function submit(e) {
+    const submit = async (e) => {
         e.preventDefault();
 
         try {
-
-            const res = await axios.post("http://localhost:8000/login", {
-                email, password
-            })
-
-                .then(res => {
-                    const { data } = res;
-
-                    console.log("Response data:", data);
-                    if (res.data && res.data.token) {
-                        localStorage.setItem('token', res.data.token);
-                        localStorage.setItem('email', email);
-                        history("/home", { state: { email: email } });
+            const response = await axios.post(
+                "https://pfe-qvol.onrender.com/login",
+                { email, password },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Method": "POST",
                     }
-                    else if (res.data === "notexist") {
-                        alert("User have not sign up")
-                    } else if (res.data === "incorrectpassword") {
-                        alert("password inccorect")
-                    }
-                })
-                .catch(e => {
-                    alert("wrong details")
-                    console.log(e);
-                })
+                }
+            );
+            const { data } = response;
 
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('email', email);
+
+            if (data.user.role == 'admin') {
+                navigate("/besoins");
+            } else {
+                navigate("/home");
+            }
+
+            console.log(response.data);
+        } catch (error) {
+            if (error.response) {
+                setError(error.response.data.message);
+            } else {
+                setError("An unexpected error occurred. Please try again later.");
+            }
         }
-        catch (e) {
-            console.log(e);
-
-        }
-
-    }
-
+    };
 
     return (
+<<<<<<< HEAD
         <div className="comp">
               <div className="login">
             <div className="cont log">
@@ -80,6 +83,22 @@ function Login() {
         </div>
       
     )
+=======
+        <div className="login">
+            <h1>Login</h1>
+            <form onSubmit={submit}>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                <input type="submit" value="Login" />
+            </form>
+            {error && <p className="error">{error}</p>}
+            <br />
+            <p>OR</p>
+            <br />
+            <Link to="/signup">Signup Page</Link>
+        </div>
+    );
+>>>>>>> 0351780467f333dde925b79c120f8e17722a1898
 }
 
-export default Login
+export default Login;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
@@ -6,48 +7,49 @@ import { MdEmail  } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
 import { FaUser } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
+=======
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+>>>>>>> 0351780467f333dde925b79c120f8e17722a1898
 
 function Signup() {
     const navigate = useNavigate();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [role, setRole] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [error, setError] = useState('');
 
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:8000/register", {
+            const response = await axios.post("https://pfe-qvol.onrender.com/register", {
                 email,
                 password,
                 name,
                 phoneNumber,
+
             });
 
             const { data } = response;
 
-            console.log("Response data:", data);
+            if (data.message === "User created successfully") {
 
-            if (data.token) {
-                console.log("Token:", data.token);
+                navigate("/home");
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('email', email);
-
-                navigate("/home", { state: { id: email } });
-            }
-
-            if (data === "exist") {
-                alert("User already exists");
-            } else if (data === "notexist") {
-                alert("User registered successfully");
+                console.log(data)
+            } else {
+                setError(data.message);
             }
         } catch (error) {
+            setError("An error occurred while signing up");
             console.error("Error:", error);
-            alert("An error occurred while registering");
         }
-    }
+    };
 
     return (
         <div className="compont">
@@ -76,10 +78,16 @@ function Signup() {
                 <p>You have account?</p><Link to="/" className="a">Login Page</Link>
                </div>
             </form>
+<<<<<<< HEAD
             </div>
             <div className="sidee">
             <span className="bg-animate"></span>
             </div>
+=======
+            {error && <p className="error">{error}</p>}
+            <p>OR</p>
+            <Link to="/login">Login Page</Link>
+>>>>>>> 0351780467f333dde925b79c120f8e17722a1898
         </div>
         </div>
       
